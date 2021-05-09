@@ -8,7 +8,9 @@
                     <table cellpadding="0" width="100%" style="border-collapse:collapse;border-spacing:0px">
                         <tbody>
                             <tr style="border-collapse:collapse">
-                                <td  style="padding:0;Margin:0;font-size:0px"><img src="http://viettel-ca.vn/media/images/logo_viettel-ca_new_2021_2_small.jpg" style="display:block;border:0;outline:none;text-decoration:none" width="192" height="61" class="CToWUd"></td>
+                                <td  style="padding:0;Margin:0;font-size:0px">
+                                    <img src="http://vnpt-kysodientu.com/uploads/plugin/setting/3/1590369993-1477555307-ch-ky-s-i-n-t-mang-l-i-s-an-toan-khi-s-d-ng.png" style="display:block;border:0;outline:none;text-decoration:none" width="192" height="61" class="CToWUd">
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -56,10 +58,10 @@
         <b>+ ĐƠN VỊ THỤ HƯỞNG: TRUNG TÂM KINH DOANH VNPT-HÀ NỘI --- CHI NHÁNH TCT DVVT</b><br>
         - Mở tại: Ngân hàng TMCP Đầu Tư và Phát Triển Việt Nam -Chi nhánh Sở Giao Dịch 3.<br>
         - Nội dung chuyển khoản:" {{ $user->company }} ” –“ {{ $user->tax_code }} ”- Thanh toán gia hạn chữ ký số<br>
-        (sau khi thanh toán đề nghị gửi UNC về email này hoặc zalo 0827.333.980)<br>
+        (sau khi thanh toán đề nghị gửi UNC về email này hoặc zalo 0968.95.91.91)<br>
         (nếu chuyển online internet banking - vui lòng chụp lại lịch sử giao dịch + lệnh chuyển tiền thành công trên màn hình)<br>
-         <b>Liên Hệ Call/Zalo : Phạm Dương : 0827.333.980<b><br>
-            Lưu ý : ketoantphcm2@gmail.com Công Ty  đã đăng kí gia hạn hoặc không muốn nâng cấp vui lòng phản hồi lại thông tin vào email này để tránh nhận email vào lần sau<br>
+         <b>Liên Hệ Call/Zalo : Nguyễn Thi : 0968.95.91.91<b><br>
+            Lưu ý : thi.vnpthanoi@gmail.com Công Ty  đã đăng kí gia hạn hoặc không muốn nâng cấp vui lòng phản hồi lại thông tin vào email này để tránh nhận email vào lần sau<br>
     </p>
     <tr style="border-collapse:collapse">
         <td  style="padding:20px;background-color:#f6f6f6">
@@ -69,7 +71,13 @@
             <td  style="padding:0;Margin:0;width:270px">
             <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;border-spacing:0px">
             <tbody><tr style="border-collapse:collapse">
-                <td  style="padding:0;Margin:0"><p style="Margin:0;font-size:10px;font-family:arial,'helvetica neue',helvetica,sans-serif;line-height:15px;color:#333333"><strong>TRUNG TÂM KINH DOANH VNPT-HÀ NỘI--CHI NHÁNH TCT DVVT</strong><br>Tầng 1, Tòa nhà MOffice Adelle<br>373-375 Nguyễn Trọng Tuyển, Phường 2, Quận Tân Bình, TP. Hồ Chí Minh<br><a href="mailto:career@applancer.net" target="_blank">ketoantphcm2@gmail.com</a> - 0827.333.980</p></td>
+                <td  style="padding:0;Margin:0">
+                    <p style="Margin:0;font-size:10px;font-family:arial,'helvetica neue',helvetica,sans-serif;line-height:15px;color:#333333">
+                        <strong>TRUNG TÂM KINH DOANH VNPT-PHÒNG BÁN HÀNG DOANH NGHIỆP 1 (DN1)</strong>
+                        <br>Tòa nhà VNPT Vinaphone<br>Số 68 Ngô Quyền, Hàng Bài, Hoàn Kiếm, Hà Nội<br>
+                        <a href="mailto:career@applancer.net" target="_blank">thi.vnpthanoi@gmail.com</a> - 0968.95.91.91/0838.95.91.91
+                    </p>
+                </td>
             </tr>
             </tbody></table></td>
         </tr>

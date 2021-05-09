@@ -34,12 +34,14 @@ class UserController extends Controller
 
     public function sendEmail(Request $request)
     {
+        set_time_limit(300);
         $users = User::all();
         $data = [
             'subject' => $request->subject,
             'type' => 'Create task',
             'content' => 'has been created!',
         ];
+        
         SendEmail::dispatch($data, $users)->delay(now()->addSeconds(0));
         return redirect()->Route('home')->with('sucssess', 'Send Email Success');
     }
