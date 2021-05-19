@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +13,20 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\UserController@index')->name('home');
-Route::get('clear-users', 'App\Http\Controllers\UserController@clearUsers')->name('clear.users');
-Route::post('import-file', 'App\Http\Controllers\UserController@import')->name('import.file');
-Route::post('send-email', 'App\Http\Controllers\UserController@sendEmail')->name('send.email');
-Route::get('content-email', 'App\Http\Controllers\UserController@contentEmail')->name('content.email');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', 'App\Http\Controllers\CustomerController@index')->name('home');
+    Route::get('clear-users', 'App\Http\Controllers\CustomerController@clearUsers')->name('clear.customers');
+    Route::post('import-file', 'App\Http\Controllers\CustomerController@import')->name('import.file');
+    Route::post('send-email', 'App\Http\Controllers\CustomerController@sendEmail')->name('send.email');
+    Route::get('content-email', 'App\Http\Controllers\CustomerController@contentEmail')->name('content.email');
+});
+
+require __DIR__.'/auth.php';

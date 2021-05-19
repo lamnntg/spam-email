@@ -29,7 +29,7 @@
         </button>
 
         <div>
-            <a type="button" class="btn btn-danger" href="{{ Route('clear.users') }}">Clear All</a>
+            <a type="button" class="btn btn-danger" href="{{ Route('clear.customers') }}">Clear All</a>
         </div>
     </div>
     <!-- Modal -->
@@ -76,15 +76,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($users as $key => $user)
+                @foreach ($customers as $key => $customer)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->company }}</td>
-                        <td>{{ $user->phone_number }}</td>
-                        <td>{{ $user->tax_code }}</td>
-                        <td>{{ $user->description }}</td>
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->company }}</td>
+                        <td>{{ $customer->phone_number }}</td>
+                        <td>{{ $customer->tax_code }}</td>
+                        <td>{{ $customer->description }}</td>
                     </tr>
                 @endforeach
                 </tbody>

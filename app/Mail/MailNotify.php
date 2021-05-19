@@ -18,9 +18,9 @@ class MailNotify extends Mailable
      *
      * @return void
      */
-    public function __construct($data, $user)
+    public function __construct($data, $customer)
     {
-        $this->user = $user;
+        $this->customer = $customer;
         $this->data = $data;
     }
 
@@ -32,8 +32,8 @@ class MailNotify extends Mailable
     public function build()
     {
         return $this
-            ->from('wiwilaam@gmail.com')
-            ->view('mails.form-email', ['user' => $this->user])
+            ->from('lamtamnhu.hust@gmail.com')
+            ->view('mails.form-email', ['customer' => $this->customer])
             ->subject($this->data['subject']);
     }
 }

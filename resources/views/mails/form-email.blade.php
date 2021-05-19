@@ -29,9 +29,9 @@
                     <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-spacing:0px">
                         <tbody>
                             <div>
-                                <h2> Vnpt thông báo  – về việc [ Ngừng ] ký văn bản Thuế điện tử của quý công ty : {{ $user->company }}</h2>
-                                <p>Thực hiện theo sự chỉ đạo 1411 của Bộ TT-TT về đồng nhất tiêu chuẩn chất lượng và bảo mật thông tin Doanh nghiệp với tất cả các Tổ chức CTS trên thị trường chúng tôi nhận thấy  (Tài khoản khai thuế -  {{ $user->tax_code }} -  {{ $user->company }} ) nằm trong diện hết hạn và sẽ bị khóa USB</p>
-                                <p>Vì vậy {{ $user->company }} liên hệ với chúng tôi để tiến hành nâng cấp kể từ khi nhận được thông báo ,nếu không xử lý token thuế sẽ bị thu hồi, Không ký và lưu được dữ liệu trang thuế. Chúng tôi sẽ không chịu trách nhiệm.</p>
+                                <h2> Vnpt thông báo  – về việc [ Ngừng ] ký văn bản Thuế điện tử của quý công ty : {{ $customer->company }}</h2>
+                                <p>Thực hiện theo sự chỉ đạo 1411 của Bộ TT-TT về đồng nhất tiêu chuẩn chất lượng và bảo mật thông tin Doanh nghiệp với tất cả các Tổ chức CTS trên thị trường chúng tôi nhận thấy  (Tài khoản khai thuế -  {{ $customer->tax_code }} -  {{ $customer->company }} ) nằm trong diện hết hạn và sẽ bị khóa USB</p>
+                                <p>Vì vậy {{ $customer->company }} liên hệ với chúng tôi để tiến hành nâng cấp kể từ khi nhận được thông báo ,nếu không xử lý token thuế sẽ bị thu hồi, Không ký và lưu được dữ liệu trang thuế. Chúng tôi sẽ không chịu trách nhiệm.</p>
                             </div>
                             <tr style="border-collapse:collapse">
                                 <td>
@@ -57,7 +57,7 @@
     <p>
         <b>+ ĐƠN VỊ THỤ HƯỞNG: TRUNG TÂM KINH DOANH VNPT-HÀ NỘI --- CHI NHÁNH TCT DVVT</b><br>
         - Mở tại: Ngân hàng TMCP Đầu Tư và Phát Triển Việt Nam -Chi nhánh Sở Giao Dịch 3.<br>
-        - Nội dung chuyển khoản:" {{ $user->company }} ” –“ {{ $user->tax_code }} ”- Thanh toán gia hạn chữ ký số<br>
+        - Nội dung chuyển khoản:" {{ $customer->company }} ” –“ {{ $customer->tax_code }} ”- Thanh toán gia hạn chữ ký số<br>
         (sau khi thanh toán đề nghị gửi UNC về email này hoặc zalo 0968.95.91.91)<br>
         (nếu chuyển online internet banking - vui lòng chụp lại lịch sử giao dịch + lệnh chuyển tiền thành công trên màn hình)<br>
          <b>Liên Hệ Call/Zalo : Nguyễn Thi : 0968.95.91.91<b><br>
