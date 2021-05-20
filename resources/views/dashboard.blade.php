@@ -3,6 +3,13 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
+
+        <h1>{{ LaravelGmail::user() }}</h1>
+        @if(LaravelGmail::check())
+            <a href="{{ url('oauth/gmail/logout') }}">logout</a>
+        @else
+            <a href="{{ url('oauth/gmail') }}">login</a>
+        @endif
     </x-slot>
 
     <div class="py-12">

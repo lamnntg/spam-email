@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Mail;
+use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 class CustomerController extends Controller
 {
     public function index()
@@ -28,6 +29,9 @@ class CustomerController extends Controller
 
     public function contentEmail()
     {
+        if (!LaravelGmail::check()) {
+            return view('mails.login-gmail');
+        }
         return view('mails.input-content');
     }
 
