@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="Route('home')" :active="request()->routeIs('home')">
+                        {{ __('List Customer') }}
+                    </x-nav-link>
+                    <x-nav-link :href="Route('content.email')" :active="request()->routeIs('content.email')">
+                        {{ __('Gmail API') }}
+                    </x-nav-link>
                 </div>
             </div>
 
