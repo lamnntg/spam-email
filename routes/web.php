@@ -2,6 +2,7 @@
 
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/oauth/gmail/callback', function (){
         LaravelGmail::makeToken();
         return redirect()->route('content.email');
-    })->name('send.email');
+    })->name('token.email');
 
     Route::get('/oauth/gmail/logout', function (){
         LaravelGmail::logout(); //It returns exception if fails

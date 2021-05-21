@@ -30,7 +30,7 @@ class CustomerController extends Controller
     public function contentEmail()
     {
         if (!LaravelGmail::check()) {
-            return view('mails.login-gmail');
+            return redirect()->Route('dashboard')->with('failed', 'Đăng nhập Gmail trước');
         }
         return view('mails.input-content');
     }
