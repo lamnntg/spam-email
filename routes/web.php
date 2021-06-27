@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -26,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('import-file', 'App\Http\Controllers\CustomerController@import')->name('import.file');
     Route::post('send-email', 'App\Http\Controllers\CustomerController@sendEmail')->name('send.email');
     Route::get('content-email', 'App\Http\Controllers\CustomerController@contentEmail')->name('content.email');
+
+    Route::get('content-email-amazon', [CustomerController::class, 'emailAmazonSes'])->name('content.emailAmazon');
+    Route::post('send-email-amazon',[CustomerController::class, 'sendEmailAmazon'])->name('send.emailAmazon');
 
     Route::get('/oauth/gmail', function (){
         return LaravelGmail::redirect();

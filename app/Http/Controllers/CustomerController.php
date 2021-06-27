@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\ImportUser;
 use App\Jobs\SendEmail;
+use App\Jobs\SendEmailAmazon;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -33,6 +34,25 @@ class CustomerController extends Controller
             return redirect()->Route('dashboard')->with('failed', 'Đăng nhập Gmail trước');
         }
         return view('mails.input-content');
+    }
+
+    public function emailAmazonSes()
+    {
+        return view('mails.input-content-amazon-ses');
+    }
+
+    public function sendEmailAmazon(Request $request)
+    {
+        set_time_limit(300);
+        $customers = Customer::all();
+        $data = [
+            'subject' => $request->subject,
+            'type' => 'Create task',
+            'content' => 'has been created!',
+        ];
+
+        SendEmailAmazon::dispatch($data, $customers)->delay(now()->addSeconds(0));
+        return redirect()->Route('home')->with('sucssess', 'Send Email Success');
     }
 
     public function sendEmail(Request $request)

@@ -21,6 +21,9 @@
                     <x-nav-link :href="Route('content.email')" :active="request()->routeIs('content.email')">
                         {{ __('Gmail API') }}
                     </x-nav-link>
+                    <x-nav-link :href="Route('content.emailAmazon')" :active="request()->routeIs('content.emailAmazon')">
+                        {{ __('Amazon SES') }}
+                    </x-nav-link>
                 </div>
             </div>
 
