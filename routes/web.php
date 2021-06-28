@@ -17,19 +17,21 @@ use Illuminate\Support\Facades\URL;
 */
 
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('home', 'App\Http\Controllers\CustomerController@index')->name('home');
+
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    Route::get('home', [CustomerController::class, 'index'])->name('home');
     Route::get('clear-users', 'App\Http\Controllers\CustomerController@clearUsers')->name('clear.customers');
     Route::post('import-file', 'App\Http\Controllers\CustomerController@import')->name('import.file');
     Route::post('send-email', 'App\Http\Controllers\CustomerController@sendEmail')->name('send.email');
     Route::get('content-email', 'App\Http\Controllers\CustomerController@contentEmail')->name('content.email');
 
     Route::get('content-email-amazon', [CustomerController::class, 'emailAmazonSes'])->name('content.emailAmazon');
-    Route::post('send-email-amazon',[CustomerController::class, 'sendEmailAmazon'])->name('send.emailAmazon');
+    Route::post('send-email-amazon', [CustomerController::class, 'sendEmailAmazon'])->name('send.emailAmazon');
 
     Route::get('/oauth/gmail', function (){
         return LaravelGmail::redirect();
@@ -42,9 +44,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/oauth/gmail/logout', function (){
         LaravelGmail::logout(); //It returns exception if fails
-        return redirect()->to('/');
+        return redirect()->to('/admin');
     });
 });
+
+
 
 
 require __DIR__.'/auth.php';

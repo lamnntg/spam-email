@@ -44,7 +44,7 @@ class SendEmail implements ShouldQueue
             $mail = new Mail;
             $mail->to($customer->email)
                 ->from('lamtamnhu.hust@gmail.com')
-                ->view('mails.form-email', ['customer' => $customer])
+                ->view('mails.forms.notification', ['customer' => $customer])
                 ->subject($this->data['subject'])->send();
         }
     }

@@ -32,7 +32,7 @@ class MailNotify extends Mailable
     public function build()
     {
         return $this
-            ->view('mails.form-email', ['customer' => $this->customer])
+            ->view('mails.forms.notification', ['customer' => $this->customer])
             ->subject($this->data['subject']);
     }
 }
