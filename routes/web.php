@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\WebController;
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -16,14 +17,15 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
+Route::get('/', [WebController::class, 'index'])->name('web.home');
 
 
-
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+
     Route::get('home', [CustomerController::class, 'index'])->name('home');
     Route::get('clear-users', 'App\Http\Controllers\CustomerController@clearUsers')->name('clear.customers');
     Route::post('import-file', 'App\Http\Controllers\CustomerController@import')->name('import.file');

@@ -47,7 +47,7 @@ class CustomerController extends Controller
         $customers = Customer::all();
         $data = [
             'subject' => $request->subject,
-            'type' => 'Create task',
+            'type' => $request->type_email,
             'content' => 'has been created!',
         ];
 

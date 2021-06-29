@@ -75,7 +75,7 @@
                     <p style="Margin:0;font-size:10px;font-family:arial,'helvetica neue',helvetica,sans-serif;line-height:15px;color:#333333">
                         <strong>TRUNG TÂM KINH DOANH VNPT-PHÒNG BÁN HÀNG DOANH NGHIỆP 1 (DN1)</strong>
                         <br>Tòa nhà VNPT Vinaphone<br>Số 68 Ngô Quyền, Hàng Bài, Hoàn Kiếm, Hà Nội<br>
-                        <a href="mailto:career@applancer.net" target="_blank">thi.vnpthanoi@gmail.com</a> - 0968.95.91.91/0838.95.91.91
+                        <a href="mailto:thi.vnpthanoi@gmail.com" target="_blank">thi.vnpthanoi@gmail.com</a> - 0968.95.91.91/0838.95.91.91
                     </p>
                 </td>
             </tr>
