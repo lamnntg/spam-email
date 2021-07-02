@@ -22,6 +22,7 @@ class ImportUser implements ToModel, WithHeadingRow
             'phone_number' => $row['phone_number'],
             'tax_code' => $row['tax_code'],
             'description' => $row['description'],
+            'status_current_mail' => 1,
         ]);
     }
 }

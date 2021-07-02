@@ -8,8 +8,9 @@ use App\Jobs\SendEmailAmazon;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Mail;
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
+use Exception;
+
 class CustomerController extends Controller
 {
     public function index()
@@ -45,13 +46,24 @@ class CustomerController extends Controller
     {
         set_time_limit(300);
         $customers = Customer::all();
+
         $data = [
             'subject' => $request->subject,
             'type' => $request->type_email,
-            'content' => 'has been created!',
+            'content' => $request->content,
         ];
 
-        SendEmailAmazon::dispatch($data, $customers)->delay(now()->addSeconds(0));
+        foreach ($customers as $customer) {
+            try{
+                SendEmailAmazon::dispatch($data, $customer)->delay(now()->addSeconds(0));
+            }
+            catch(Exception $e){
+                $customer->update([
+                    'status_current_mail' => 0
+                ]);
+            }
+        }
+
         return redirect()->Route('home')->with('sucssess', 'Send Email Success');
     }
 
@@ -70,7 +82,8 @@ class CustomerController extends Controller
     }
 
     public function clearUsers()
-    {   $customers = Customer::all();
+    {
+        $customers = Customer::all();
         try {
             foreach ($customers as $key => $customer) {
                 $customer->delete();
@@ -79,5 +92,12 @@ class CustomerController extends Controller
             return back()->with('failed', 'Clear Users Failed');
         }
         return back()->with('sucssess', 'Clear Users Success');
+    }
+
+    public function deleteCustomer(int $customerId)
+    {
+        $customer = Customer::findOrFail($customerId)->delete();
+
+        return redirect()->back()->with('sucssess', 'Delete Users Success');;
     }
 }

@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('tax_code')->nullable();
             $table->string('description')->nullable();
+            $table->integer('status_current_mail')->nullable();
             $table->timestamps();
         });
     }

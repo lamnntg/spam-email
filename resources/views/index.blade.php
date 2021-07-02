@@ -53,6 +53,8 @@
                         <th scope="col">Phone Number</th>
                         <th scope="col">Tax Code</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,6 +67,14 @@
                             <td>{{ $customer->phone_number }}</td>
                             <td>{{ $customer->tax_code }}</td>
                             <td>{{ $customer->description }}</td>
+                            <td>
+                                @if ( $customer->status_current_mail == 1)
+                                    <span class="badge badge-pill badge-success">Success</span>
+                                @else
+                                    <span class="badge badge-pill badge-danger">Fail</span>
+                                @endif
+                            </td>
+                            <td><a href="{{ route('delete.customer',['customer_id' => $customer->id]) }}" type="button" class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -73,3 +83,4 @@
         </div>
     </div>
 </x-app-layout>
+

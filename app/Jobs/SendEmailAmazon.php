@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\CustomMail;
 use App\Mail\MailNotify;
 use App\Mail\MailNotifyOldVersion;
 use Illuminate\Bus\Queueable;
@@ -17,17 +18,17 @@ class SendEmailAmazon implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $data;
-    protected $customers;
+    protected $customer;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data, $customers)
+    public function __construct($data, $customer)
     {
         $this->data = $data;
-        $this->customers = $customers;
+        $this->customer = $customer;
     }
 
     /**
@@ -38,13 +39,11 @@ class SendEmailAmazon implements ShouldQueue
     public function handle()
     {
         if ($this->data['type'] == 1) {
-            foreach ($this->customers as $customer) {
-                Mail::to($customer->email)->send(new MailNotify($this->data, $customer));
-            }
+                Mail::to($this->customer->email)->send(new MailNotify($this->data, $this->customer));
         } elseif ($this->data['type'] == 2) {
-            foreach ($this->customers as $customer) {
-                Mail::to($customer->email)->send(new MailNotifyOldVersion($this->data, $customer));
-            }
+                Mail::to($this->customer->email)->send(new MailNotifyOldVersion($this->data, $this->customer));
+        } else {
+                Mail::to($this->customer->email)->send(new CustomMail($this->data, $this->customer));
         }
     }
 }

@@ -28,6 +28,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('home', [CustomerController::class, 'index'])->name('home');
     Route::get('clear-users', 'App\Http\Controllers\CustomerController@clearUsers')->name('clear.customers');
+    Route::get('delete-user/{customer_id}', [CustomerController::class, 'deleteCustomer'])->name('delete.customer');
+
     Route::post('import-file', 'App\Http\Controllers\CustomerController@import')->name('import.file');
     Route::post('send-email', 'App\Http\Controllers\CustomerController@sendEmail')->name('send.email');
     Route::get('content-email', 'App\Http\Controllers\CustomerController@contentEmail')->name('content.email');
