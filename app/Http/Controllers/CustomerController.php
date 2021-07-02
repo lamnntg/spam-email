@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Imports\ImportUser;
 use App\Jobs\SendEmail;
+use App\Jobs\SendEmailAmazon;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use Mail;
+use Dacastro4\LaravelGmail\Facade\LaravelGmail;
+use Exception;
+
 class CustomerController extends Controller
 {
     public function index()
@@ -28,7 +31,40 @@ class CustomerController extends Controller
 
     public function contentEmail()
     {
+        if (!LaravelGmail::check()) {
+            return redirect()->Route('dashboard')->with('failed', 'Đăng nhập Gmail trước');
+        }
         return view('mails.input-content');
+    }
+
+    public function emailAmazonSes()
+    {
+        return view('mails.input-content-amazon-ses');
+    }
+
+    public function sendEmailAmazon(Request $request)
+    {
+        set_time_limit(300);
+        $customers = Customer::all();
+
+        $data = [
+            'subject' => $request->subject,
+            'type' => $request->type_email,
+            'content' => $request->content,
+        ];
+
+        foreach ($customers as $customer) {
+            try{
+                SendEmailAmazon::dispatch($data, $customer)->delay(now()->addSeconds(0));
+            }
+            catch(Exception $e){
+                $customer->update([
+                    'status_current_mail' => 0
+                ]);
+            }
+        }
+
+        return redirect()->Route('home')->with('sucssess', 'Send Email Success');
     }
 
     public function sendEmail(Request $request)
@@ -46,7 +82,8 @@ class CustomerController extends Controller
     }
 
     public function clearUsers()
-    {   $customers = Customer::all();
+    {
+        $customers = Customer::all();
         try {
             foreach ($customers as $key => $customer) {
                 $customer->delete();
@@ -55,5 +92,12 @@ class CustomerController extends Controller
             return back()->with('failed', 'Clear Users Failed');
         }
         return back()->with('sucssess', 'Clear Users Success');
+    }
+
+    public function deleteCustomer(int $customerId)
+    {
+        $customer = Customer::findOrFail($customerId)->delete();
+
+        return redirect()->back()->with('sucssess', 'Delete Users Success');;
     }
 }

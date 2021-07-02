@@ -20,5 +20,6 @@ class Customer extends Model
         'phone_number',
         'tax_code',
         'description',
+        'status_current_mail',
     ];
 }

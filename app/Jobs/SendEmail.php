@@ -3,7 +3,8 @@
 namespace App\Jobs;
 
 use App\Mail\MailNotify;
-use Mail;
+//use Mail;
+use Dacastro4\LaravelGmail\Services\Message\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -36,8 +37,15 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
+        // foreach ($this->customers as $customer) {
+        //     Mail::to($customer->email)->send(new MailNotify($this->data, $customer));
+        // }
         foreach ($this->customers as $customer) {
-            Mail::to($customer->email)->send(new MailNotify($this->data, $customer));
+            $mail = new Mail;
+            $mail->to($customer->email)
+                ->from('lamtamnhu.hust@gmail.com')
+                ->view('mails.forms.notification', ['customer' => $customer])
+                ->subject($this->data['subject'])->send();
         }
     }
 }
