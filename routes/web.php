@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\WebController;
+use App\Models\Customer;
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -37,10 +38,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('content-email-amazon', [CustomerController::class, 'emailAmazonSes'])->name('content.emailAmazon');
     Route::post('send-email-amazon', [CustomerController::class, 'sendEmailAmazon'])->name('send.emailAmazon');
 
-    Route::get('/oauth/gmail', function (){
-        return LaravelGmail::redirect();
-    })->name('gmail.login');
-
     Route::get('/oauth/gmail/callback', function (){
         LaravelGmail::makeToken();
         return redirect()->route('content.email');
@@ -51,5 +48,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         return redirect()->to('/admin');
     });
 });
+
+Route::get('/oauth/gmail', function (){
+    return LaravelGmail::redirect();
+})->name('gmail.login');
 
 require __DIR__.'/auth.php';

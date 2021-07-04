@@ -34,9 +34,9 @@
 
                     <div class="form-group">
                         <label class="fw-bold" for="exampleFormControlInput1">Email Subject :</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="subject" placeholder="Chủ đề Email">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="subject" placeholder="Chủ đề Email" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="ck_editor" >
                         <label class="fw-bold" for="editor">Example Content :</label>
                         <textarea class="form-control" id="editor" name="content" rows="10" placeholder="Nội dung Email"></textarea>
                     </div>
@@ -45,4 +45,18 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script>
+        $('#ck_editor').hide();
+        $( document ).ready(function() {
+            $('input[type=radio][name=type_email]').change( function() {
+                if ($("#radioDefault3").prop("checked") == true) {
+                    $('#ck_editor').show();
+                } else {
+                    $('#ck_editor').hide();
+                }
+            });
+        });
+    </script>
+    @endpush
 </x-app-layout>

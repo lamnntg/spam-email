@@ -11,23 +11,24 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\View;
 
 class SendEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $data;
-    protected $customers;
+    protected $customer;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($data, $customers)
+    public function __construct($data, $customer)
     {
         $this->data = $data;
-        $this->customers = $customers;
+        $this->customer = $customer;
     }
 
     /**
@@ -37,15 +38,24 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        // foreach ($this->customers as $customer) {
-        //     Mail::to($customer->email)->send(new MailNotify($this->data, $customer));
-        // }
-        foreach ($this->customers as $customer) {
-            $mail = new Mail;
-            $mail->to($customer->email)
-                ->from('lamtamnhu.hust@gmail.com')
-                ->view('mails.forms.notification', ['customer' => $customer])
+        $mail = new Mail;
+
+        if ($this->data['type'] == 1) {
+            $mail->to($this->customer->email)
+                ->view('mails.forms.notification', ['customer' => $this->customer])
+                ->subject($this->data['subject'])->send();
+        } elseif ($this->data['type'] == 2) {
+            $mail->to($this->customer->email)
+                ->view('mails.forms.notification-old-version', ['customer' => $this->customer])
                 ->subject($this->data['subject'])->send();
         }
+        //  else {
+        //     dd(1);
+        //     $view = View::make($this->data['content']);
+        //     dd($view);
+        //     $mail->to($this->customer->email)
+        //         ->view($view, ['customer' => $this->customer])
+        //         ->subject($this->data['subject']);
+        // }
     }
 }

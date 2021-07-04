@@ -71,13 +71,24 @@ class CustomerController extends Controller
     {
         set_time_limit(300);
         $customers = Customer::all();
+
         $data = [
             'subject' => $request->subject,
-            'type' => 'Create task',
-            'content' => 'has been created!',
+            'type' => $request->type_email,
+            'content' => $request->content,
         ];
 
-        SendEmail::dispatch($data, $customers)->delay(now()->addSeconds(0));
+        foreach ($customers as $customer) {
+            try{
+                SendEmail::dispatch($data, $customer)->delay(now()->addSeconds(0));
+            }
+            catch(Exception $e){
+                $customer->update([
+                    'status_current_mail' => 0
+                ]);
+            }
+        }
+
         return redirect()->Route('home')->with('sucssess', 'Send Email Success');
     }
 
