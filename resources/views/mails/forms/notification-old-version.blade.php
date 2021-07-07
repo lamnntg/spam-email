@@ -31,7 +31,7 @@
                             <div>
                                 <h2> VNPT–Ca thông báo về tình trạng chứng thư số kê khai thuế/BHXB/Hải quan của quý công ty : {{ $customer->company }}</h2>
                                 <p>Con dấu điện tử <b>(Tài khoản khai thuế -  {{ $customer->tax_code }} -  {{ $customer->company }} )</b> sắp hết hiệu lực kê khai và thuộc Usb phiên bản cũ Version 4.0 không tương thích với đường truyền.</p>
-                                <p>Trong quá trình rà soát của chúng tôi phát hiện token của doanh nghiệp nằm trong diện đang sử dụng token cũ từ năm 2015, 2016, 2017, 2018, 2019. Không tương thích với đường truyền version 6.0 vào thời điểm kê khai sắp tới, cần được thực hiện nâng cấp hoặc thay thế bằng token đạt chuẩn năm 2021</p>
+                                <p>Trong quá trình rà soát của chúng tôi phát hiện token của doanh nghiệp nằm trong diện đang sử dụng token cũ từ năm 2015, 2016, 2017, 2018, 2019. Không tương thích với đường truyền version 6.0 vào thời điểm kê khai sắp tới, cần được thực hiện nâng cấp hoặc thay thế bằng token đạt chuẩn năm 2021.</p>
                                 <p>Vì vậy <b>{{ $customer->company }}</b> liên hệ với chúng tôi để tiến hành nâng cấp kể từ khi nhận được thông báo, nếu không xử lý token thuế sẽ bị thu hồi, Không ký và lưu được dữ liệu trang thuế. Chúng tôi sẽ không chịu trách nhiệm.</p>
                             </div>
                             <tr>
@@ -62,8 +62,8 @@
             - Nội dung chuyển khoản:" {{ $customer->company }} ” –“ {{ $customer->tax_code }} ”- Thanh toán gia hạn chữ ký số<br>
                 (sau khi thanh toán đề nghị gửi UNC về email này hoặc zalo 0968.95.91.91)<br>
                 (nếu chuyển online internet banking - vui lòng chụp lại lịch sử giao dịch + lệnh chuyển tiền thành công trên màn hình)<br>
-            <b>Liên Hệ Call/Zalo : Nguyễn Thi : 0968.95.91.91<b><br>
-                Lưu ý : thi.vnpthanoi@gmail.com Công Ty đã đăng kí gia hạn hoặc không muốn nâng cấp vui lòng phản hồi lại thông tin vào email này để tránh nhận email vào lần sau.<br>
+            <b>Liên Hệ Call/Zalo : Nguyễn Thi : 0968.95.91.91. Email : thi.vnpthanoi@gmail.com <b><br>
+                Lưu ý: Công Ty đã đăng kí gia hạn hoặc không muốn nâng cấp vui lòng phản hồi lại thông tin vào email này để tránh nhận email vào lần sau.<br>
         </p>
     </div>
     <tr style="border-collapse:collapse">
@@ -77,9 +77,9 @@
                                 <tr style="border-collapse:collapse">
                                     <td  style="padding:0;Margin:0">
                                         <p style="Margin:0;font-size:10px;font-family:arial;line-height:15px;color:#333333">
-                                            <strong>TRUNG TÂM KINH DOANH VNPT-PHÒNG BÁN HÀNG DOANH NGHIỆP 1 (DN1)</strong>
-                                            <br>Tòa nhà VNPT Vinaphone<br>Số 68 Ngô Quyền, Hàng Bài, Hoàn Kiếm, Hà Nội<br>
-                                            <a href="mailto:thi.vnpthanoi@gmail.com" target="_blank">thi.vnpthanoi@gmail.com</a> - 0968.95.91.91/0838.95.91.91
+                                            <strong>TRUNG TÂM KINH DOANH  DỊCH VỤ CHỮ KÝ SỐ DOANH NGHIỆP</strong>
+                                            <br>Tòa nhà RICE City<br>Tây nam Linh Đàm, Hoàng Mai, Hà Nội<br>
+                                            <a href="mailto:h91anoi@vnpt-kysodientu.com" target="_blank">hanoi@vnpt-kysodientu.com</a> - 0968.95.91.91/0838.95.91.
                                         </p>
                                     </td>
                                 </tr>

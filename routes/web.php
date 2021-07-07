@@ -42,15 +42,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         LaravelGmail::makeToken();
         return redirect()->route('content.email');
     })->name('token.email');
-
-    Route::get('/oauth/gmail/logout', function (){
-        LaravelGmail::logout(); //It returns exception if fails
-        return redirect()->to('/admin');
-    });
 });
 
 Route::get('/oauth/gmail', function (){
     return LaravelGmail::redirect();
 })->name('gmail.login');
+
+Route::get('/oauth/gmail/logout', function (){
+    LaravelGmail::logout(); //It returns exception if fails
+    return redirect()->to('/admin');
+});
 
 require __DIR__.'/auth.php';

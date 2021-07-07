@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Customer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -31,8 +32,10 @@ class MailNotify extends Mailable
      */
     public function build()
     {
+        $urlForm = Customer::$urlFormMail[$this->data['type']][$this->data['supplyCompany']->id];
+// dd($urlForm, $this->data['supplyCompany']);
         return $this
-            ->view('mails.forms.notification', ['customer' => $this->customer])
+            ->view($urlForm, ['customer' => $this->customer, 'supplyCompany' => $this->data['supplyCompany']])
             ->subject($this->data['subject']);
     }
 }

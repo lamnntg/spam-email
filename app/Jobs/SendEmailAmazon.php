@@ -38,12 +38,10 @@ class SendEmailAmazon implements ShouldQueue
      */
     public function handle()
     {
-        if ($this->data['type'] == 1) {
-                Mail::to($this->customer->email)->send(new MailNotify($this->data, $this->customer));
-        } elseif ($this->data['type'] == 2) {
-                Mail::to($this->customer->email)->send(new MailNotifyOldVersion($this->data, $this->customer));
+        if ($this->data['type'] == 3) {
+            Mail::to($this->customer->email)->send(new CustomMail($this->data, $this->customer));
         } else {
-                Mail::to($this->customer->email)->send(new CustomMail($this->data, $this->customer));
+            Mail::to($this->customer->email)->send(new MailNotify($this->data, $this->customer));
         }
     }
 }

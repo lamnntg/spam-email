@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\MailNotify;
+use App\Models\Customer;
 //use Mail;
 use Dacastro4\LaravelGmail\Services\Message\Mail;
 use Illuminate\Bus\Queueable;
@@ -38,24 +39,12 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
+        $urlForm = Customer::$urlFormMail[$this->data['type']][$this->data['supplyCompany']->id];
+
         $mail = new Mail;
 
-        if ($this->data['type'] == 1) {
-            $mail->to($this->customer->email)
-                ->view('mails.forms.notification', ['customer' => $this->customer])
-                ->subject($this->data['subject'])->send();
-        } elseif ($this->data['type'] == 2) {
-            $mail->to($this->customer->email)
-                ->view('mails.forms.notification-old-version', ['customer' => $this->customer])
-                ->subject($this->data['subject'])->send();
-        }
-        //  else {
-        //     dd(1);
-        //     $view = View::make($this->data['content']);
-        //     dd($view);
-        //     $mail->to($this->customer->email)
-        //         ->view($view, ['customer' => $this->customer])
-        //         ->subject($this->data['subject']);
-        // }
+        $mail->to($this->customer->email)
+            ->view($urlForm, ['customer' => $this->customer, 'supplyCompany' => $this->data['supplyCompany']])
+            ->subject($this->data['subject'])->send();
     }
 }

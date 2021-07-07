@@ -11,7 +11,17 @@
                 <form method="POST" action="{{ Route('send.emailAmazon') }}">
                     @csrf
                     <div class="form-group">
-                        <label class="fw-bold">Chọn loại email:</label>
+                        <label class="font-weight-bold">Công ty cung cấp dịch vụ :</label>
+                        <select class="custom-select" name="supply_company_id" required>
+                            <option value="1">VNPT-CA</option>
+                            <option value="2">Viettel-CA</option>
+                            <option value="3">NewCA</option>
+                            <option value="4">FPT-CA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-weight-bold">Chọn loại email:</label>
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="type_email" id="radioDefault1" value="1" checked>
                             <label class="form-check-label" for="radioDefault1">
@@ -33,11 +43,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="fw-bold" for="exampleFormControlInput1">Email Subject :</label>
+                        <label class="font-weight-bold" for="exampleFormControlInput1">Chủ đề email :</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" name="subject" placeholder="Chủ đề Email" required>
                     </div>
                     <div class="form-group" id="ck_editor" >
-                        <label class="fw-bold" for="editor">Example Content :</label>
+                        <label class="font-weight-bold" for="editor">Nội dung email :</label>
                         <textarea class="form-control" id="editor" name="content" rows="10" placeholder="Nội dung Email"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Email</button>

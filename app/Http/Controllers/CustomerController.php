@@ -6,6 +6,7 @@ use App\Imports\ImportUser;
 use App\Jobs\SendEmail;
 use App\Jobs\SendEmailAmazon;
 use App\Models\Customer;
+use App\Models\SupplyCompany;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Dacastro4\LaravelGmail\Facade\LaravelGmail;
@@ -46,11 +47,13 @@ class CustomerController extends Controller
     {
         set_time_limit(300);
         $customers = Customer::all();
+        $supplyCompany = SupplyCompany::findOrFail($request->supply_company_id);
 
         $data = [
             'subject' => $request->subject,
             'type' => $request->type_email,
             'content' => $request->content,
+            'supplyCompany' => $supplyCompany ?? null
         ];
 
         foreach ($customers as $customer) {
@@ -72,10 +75,14 @@ class CustomerController extends Controller
         set_time_limit(300);
         $customers = Customer::all();
 
+        $supplyCompany = SupplyCompany::findOrFail($request->supply_company_id);
+
+
         $data = [
             'subject' => $request->subject,
             'type' => $request->type_email,
             'content' => $request->content,
+            'supplyCompany' => $supplyCompany ?? null
         ];
 
         foreach ($customers as $customer) {
