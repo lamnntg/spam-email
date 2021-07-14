@@ -48,7 +48,7 @@ class CustomerController extends Controller
         set_time_limit(300);
         $customers = Customer::all();
         $supplyCompany = SupplyCompany::findOrFail($request->supply_company_id);
-
+        // dd($request->all());
         $data = [
             'subject' => $request->subject,
             'type' => $request->type_email,
